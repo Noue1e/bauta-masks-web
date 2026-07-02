@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAUTA MASKS | The Grand Ledger</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" type="application/javascript"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BAUTA MASKS</div>
+        <div class="links">
+            <a href="#mint">Terminal</a>
+            <a href="#lore">Lore</a>
+            <a href="#grid">The Grid</a>
+            <a href="#roadmap">Roadmap</a>
+        </div>
+        <div class="nav-actions">
+            <button id="navMintBtn" class="btn primary nav-btn">MINT</button>
+            <button id="connectBtn" class="wallet-btn">CONNECT NODE</button>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content">
+            <h1>ABSOLUTE ANONYMITY.<br>ABSOLUTE ORDER.</h1>
+            <p class="subtitle">Erasing the individual to protect the Grand Ledger. 1,111 faceless validators quietly controlling the flow on Polygon.</p>
+            <div class="hero-actions">
+                <a href="#mint" class="btn primary">ACCESS TERMINAL</a>
+                <a href="https://x.com/Bautamasks" target="_blank" class="btn secondary">ENTER X</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/0545.png" alt="Bauta Mask Validator 0545">
+        </div>
+    </header>
+
+    <section id="mint" class="container border-top">
+        <h2 class="section-title">// DEPLOYMENT TERMINAL</h2>
+        <div class="mint-interface">
+            <div class="mint-status">
+                <p>NETWORK STATUS: <span id="networkStatus" class="offline">OFFLINE (CONNECT WALLET)</span></p>
+                <p>SUPPLY MINTED: <span id="supplyCount">? / 1111</span></p>
+                <p>ENTRY COST: <span>YOUR_PRICE POL</span></p>
+            </div>
+            
+            <div class="mint-controls disabled" id="mintControls">
+                <div class="mint-counter">
+                    <button id="decreaseMint">-</button>
+                    <span id="mintAmount">1</span>
+                    <button id="increaseMint">+</button>
+                </div>
+                <button id="mintBtn" class="btn primary full-width">MINT VALIDATOR</button>
+                <p id="mintMessage" class="terminal-msg"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="lore" class="container border-top">
+        <h2 class="section-title">// THE CHRONICLE</h2>
+        <div class="lore-grid">
+            <div class="lore-card">
+                <h3>I. Architecture of Anonymity</h3>
+                <p>In an era dominated by total algorithmic surveillance, the individual became the ultimate vulnerability. Identity was a vector for systemic control. From the ruins of this digital hegemony arose the Grand Ledger—a pure, immutable consensus engine.</p>
+            </div>
+            <div class="lore-card">
+                <h3>II. The 1,111 Validators</h3>
+                <p>The digital Bauta completely erases the user’s demographic footprint. To wear a Bauta Mask is to step out of the chaotic noise of personal identity and into the silent order of pure consensus. Each validator is a composite of structural components fused with the unyielding textures of their brutalist reality.</p>
+            </div>
+            <div class="lore-card">
+                <h3>III. The Hierarchy</h3>
+                <p>While all validators serve with equal authority, their composition determines their status. From the steadfast base layer of the Commons to the 11 Mythics—the Inner Circle holding pure gold-on-gold structures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="grid" class="container border-top">
+        <h2 class="section-title">// VERIFY THE LEDGER</h2>
+        <p class="terminal-text">All 1,111 network nodes compiled and ready for deployment.</p>
+        <div class="grid-wrapper">
+            <img src="assets/collection_grid.png" alt="1111 Bauta Masks Grid">
+        </div>
+    </section>
+
+    <section id="roadmap" class="container border-top">
+        <h2 class="section-title">// DEPLOYMENT EPOCHS</h2>
+        <div class="timeline">
+            <div class="epoch">
+                <h3>[EPOCH 0x00] INITIALIZATION</h3>
+                <p>The Genesis Phase. Establishing the Grand Ledger’s footprint across the network. This includes the initialization of the primary X terminal, the release of the founding manifesto, and the slow opening of the closed coordination channels for early aligners.</p>
+            </div>
+            <div class="epoch">
+                <h3>[EPOCH 0x01] THE GREAT MASKING</h3>
+                <p>The network goes live. 1,111 validators are officially minted and decentralized on the Polygon blockchain. Immutable IPFS pinning ensures the permanent erasure of the individual.</p>
+            </div>
+            <div class="epoch">
+                <h3>[EPOCH 0x02] LEDGER INTEGRATION</h3>
+                <p>The order solidifies. Activation of the token-gated terminal, transforming the Bauta Mask from a digital identity into an access key. Implementation of fractional consensus voting.</p>
+            </div>
+            <div class="epoch">
+                <h3>[EPOCH 0x03] [REDACTED]</h3>
+                <p>The Grand Ledger’s true architecture is revealed. To detail the final phase now would introduce vulnerability to the network. Expect a fundamental shift.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-top">
+        <p>BAUTA MASKS © 2026</p>
+        <p class="accent-text">SECURED ON POLYGON NETWORK</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
