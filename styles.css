@@ -151,3 +151,45 @@ span.online { color: var(--accent-neon); }
 
 .full-width { width: 100%; text-align: center; }
 .terminal-msg { margin-top: 1rem; font-size: 0.85rem; color: var(--accent-neon); display: none;}
+/* --- MOBILE LAYOUT REFINEMENTS (Screens under 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Turn CSS Grids/Flexboxes into a single vertical column */
+    .nav-container, 
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    /* 2. Adjust the main terminal layout split */
+    .mint-container, 
+    .grid-layout {
+        grid-template-columns: 1fr !important; /* Forces 1 column instead of 2 side-by-side */
+        gap: 30px;
+        padding: 10px;
+    }
+
+    /* 3. Scale down heavy brutalist typography so it doesn't clip */
+    h1 {
+        font-size: 2.2rem !important;
+    }
+    
+    h2, .logo {
+        font-size: 1.8rem !important;
+    }
+
+    /* 4. Ensure images don't overflow the screen width */
+    img, .hero-image, .mask-preview {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 5. Make buttons easier to tap on touchscreens */
+    .btn, #connectBtn, #mintBtn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
