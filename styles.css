@@ -105,6 +105,7 @@ nav {
 
 /* FOOTER */
 footer { padding: 3rem; text-align: center; display: flex; justify-content: space-between; color: var(--text-muted); }
+
 /* --- MINT TERMINAL --- */
 .mint-interface {
     max-width: 600px;
@@ -151,48 +152,7 @@ span.online { color: var(--accent-neon); }
 
 .full-width { width: 100%; text-align: center; }
 .terminal-msg { margin-top: 1rem; font-size: 0.85rem; color: var(--accent-neon); display: none;}
-/* --- MOBILE LAYOUT REFINEMENTS (Screens under 768px) --- */
-@media (max-width: 768px) {
-    
-    /* 1. Turn CSS Grids/Flexboxes into a single vertical column */
-    .nav-container, 
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 15px 10px;
-    }
 
-    /* 2. Adjust the main terminal layout split */
-    .mint-container, 
-    .grid-layout {
-        grid-template-columns: 1fr !important; /* Forces 1 column instead of 2 side-by-side */
-        gap: 30px;
-        padding: 10px;
-    }
-
-    /* 3. Scale down heavy brutalist typography so it doesn't clip */
-    h1 {
-        font-size: 2.2rem !important;
-    }
-    
-    h2, .logo {
-        font-size: 1.8rem !important;
-    }
-
-    /* 4. Ensure images don't overflow the screen width */
-    img, .hero-image, .mask-preview {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* 5. Make buttons easier to tap on touchscreens */
-    .btn, #connectBtn, #mintBtn {
-        width: 100%;
-        padding: 15px;
-        font-size: 1rem;
-    }
-}
 /* --- MOBILE LAYOUT REPAIR (Screens under 768px) --- */
 @media (max-width: 768px) {
     
@@ -204,18 +164,51 @@ span.online { color: var(--accent-neon); }
         padding: 0;
     }
 
-    /* 2. Stop text from crushing into individual letters */
-    h1, h2, h3 {
-        font-size: 2.2rem !important; /* Shrinks the massive text safely */
+    /* Turn Nav into column */
+    .nav-container, nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    /* 2. Dynamic Text Scaling and Alignment Fix */
+    h1 {
+        font-size: 11vw !important; /* Scales the font perfectly to the phone's screen width */
         line-height: 1.1 !important;
-        word-break: normal !important; /* Prevents letter-splitting */
+        word-break: normal !important;
         white-space: normal !important;
+        width: 100% !important;
+        text-align: left !important;
+        margin-left: 0 !important;
+        padding-right: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    h2, h3 {
+        font-size: 8vw !important;
+        line-height: 1.2 !important;
         width: 100% !important;
         text-align: left !important;
     }
 
+    p {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 1rem !important;
+        text-align: left !important;
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure the buttons align flush with the left side of the text */
+    .hero-text, .terminal-header {
+        align-items: flex-start !important; /* Pulls everything to the left */
+        padding: 20px !important; 
+    }
+
     /* 3. Pull the image out of absolute positioning so it stops overlapping */
-    img {
+    img, .hero-image, .mask-preview {
         position: static !important; /* Removes the float */
         display: block !important;
         max-width: 90% !important;
@@ -224,8 +217,7 @@ span.online { color: var(--accent-neon); }
     }
 
     /* 4. Force all side-by-side containers to stack vertically */
-    /* This automatically fixes the Lore section and the Hero section */
-    div {
+    div, .mint-container, .grid-layout {
         grid-template-columns: 1fr !important; /* Forces CSS Grids to 1 column */
     }
 
@@ -236,5 +228,12 @@ span.online { color: var(--accent-neon); }
         width: 100% !important;
         padding: 20px !important;
         box-sizing: border-box !important;
+    }
+    
+    /* Make buttons easier to tap on touchscreens */
+    .btn, #connectBtn, #mintBtn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
     }
 }
