@@ -166,15 +166,20 @@ span.online { color: var(--accent-neon); }
         width: 100vw !important;
     }
 
-    /* 2. Fix the Headers Cutting Off */
+    /* 2. Flawless Header Scaling (No Broken Words) */
     h1, h2, h3, .section-title {
-        overflow-wrap: break-word !important; /* Forces long words like ANONYMITY to break */
-        word-wrap: break-word !important;
-        hyphens: auto !important;
+        word-wrap: normal !important;
+        overflow-wrap: normal !important;
+        word-break: keep-all !important; /* Forbids chopping words in half */
+        hyphens: none !important;
         width: 100% !important;
     }
 
-    h1 { font-size: 2.5rem !important; }
+    h1 { 
+        font-size: clamp(1.8rem, 11vw, 2.8rem) !important; /* Fluid scaling so 'ANONYMITY' perfectly fits the screen width */
+        line-height: 1.1 !important;
+    }
+    
     h2, .section-title { font-size: 1.8rem !important; }
     h3 { font-size: 1.5rem !important; }
 
