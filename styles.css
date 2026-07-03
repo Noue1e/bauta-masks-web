@@ -62,13 +62,30 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 3rem; /* Adds a hard physical barrier so the text and image can NEVER touch */
     padding: 6rem 3rem;
     min-height: 80vh;
 }
-.hero-content { max-width: 50%; }
-.hero-content h1 { font-size: 4rem; line-height: 1.1; margin: 1rem 0; }
+.hero-content { 
+    flex: 1; /* Allows the text box to dynamically breathe */
+    max-width: 55%; /* Gives the text slightly more room on squeezed desktop views */
+}
+.hero-content h1 { 
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Fluid scaling: shrinks gracefully when the desktop gets squeezed */
+    line-height: 1.1; 
+    margin: 1rem 0; 
+}
 .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
-.hero-image img { width: 400px; max-width: 100%; border: 1px solid var(--border-color); }
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.hero-image img { 
+    width: 100%; 
+    max-width: 400px; /* Lets the mask image shrink down naturally instead of staying rigidly at 400px */
+    border: 1px solid var(--border-color); 
+}
 
 /* BUTTONS */
 .btn { display: inline-block; padding: 1rem 2rem; text-decoration: none; text-transform: uppercase; font-weight: bold; border: 1px solid transparent; transition: 0.3s; margin-right: 1rem;}
