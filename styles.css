@@ -20,6 +20,7 @@ body {
     font-family: var(--font-mono);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
 }
 
 /* TYPOGRAPHY */
@@ -53,7 +54,7 @@ nav {
 .nav-btn { 
     padding: 0.5rem 1.5rem; 
     font-size: 0.9rem; 
-    margin: 0; /* Overrides the default margin on standard buttons */
+    margin: 0;
 }
 
 /* HERO SECTION */
@@ -67,7 +68,7 @@ nav {
 .hero-content { max-width: 50%; }
 .hero-content h1 { font-size: 4rem; line-height: 1.1; margin: 1rem 0; }
 .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
-.hero-image img { width: 400px; border: 1px solid var(--border-color); }
+.hero-image img { width: 400px; max-width: 100%; border: 1px solid var(--border-color); }
 
 /* BUTTONS */
 .btn { display: inline-block; padding: 1rem 2rem; text-decoration: none; text-transform: uppercase; font-weight: bold; border: 1px solid transparent; transition: 0.3s; margin-right: 1rem;}
@@ -153,87 +154,92 @@ span.online { color: var(--accent-neon); }
 .full-width { width: 100%; text-align: center; }
 .terminal-msg { margin-top: 1rem; font-size: 0.85rem; color: var(--accent-neon); display: none;}
 
-/* --- MOBILE LAYOUT REPAIR (Screens under 768px) --- */
+
+/* ========================================================= */
+/* --- SURGICAL MOBILE REPAIR (Screens under 768px) --- */
+/* ========================================================= */
 @media (max-width: 768px) {
     
-    /* 1. Prevent the page from becoming wider than the phone screen */
+    /* 1. Global Safety Nets */
     html, body {
-        width: 100vw;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
+        overflow-x: hidden !important;
+        width: 100vw !important;
     }
 
-    /* Turn Nav into column */
-    .nav-container, nav {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 15px 10px;
-    }
-
-    /* 2. Dynamic Text Scaling and Alignment Fix */
-    h1 {
-        font-size: 11vw !important; /* Scales the font perfectly to the phone's screen width */
-        line-height: 1.1 !important;
-        word-break: normal !important;
-        white-space: normal !important;
+    /* 2. Fix the Headers Cutting Off */
+    h1, h2, h3, .section-title {
+        overflow-wrap: break-word !important; /* Forces long words like ANONYMITY to break */
+        word-wrap: break-word !important;
+        hyphens: auto !important;
         width: 100% !important;
-        text-align: left !important;
-        margin-left: 0 !important;
-        padding-right: 10px !important;
-        box-sizing: border-box !important;
     }
 
-    h2, h3 {
-        font-size: 8vw !important;
-        line-height: 1.2 !important;
-        width: 100% !important;
-        text-align: left !important;
-    }
+    h1 { font-size: 2.5rem !important; }
+    h2, .section-title { font-size: 1.8rem !important; }
+    h3 { font-size: 1.5rem !important; }
 
-    p {
-        width: 100% !important;
-        max-width: 100% !important;
-        font-size: 1rem !important;
-        text-align: left !important;
-        padding-right: 15px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Ensure the buttons align flush with the left side of the text */
-    .hero-text, .terminal-header {
-        align-items: flex-start !important; /* Pulls everything to the left */
-        padding: 20px !important; 
-    }
-
-    /* 3. Pull the image out of absolute positioning so it stops overlapping */
-    img, .hero-image, .mask-preview {
-        position: static !important; /* Removes the float */
-        display: block !important;
-        max-width: 90% !important;
-        height: auto !important;
-        margin: 40px auto !important; /* Adds breathing room around the mask */
-    }
-
-    /* 4. Force all side-by-side containers to stack vertically */
-    div, .mint-container, .grid-layout {
-        grid-template-columns: 1fr !important; /* Forces CSS Grids to 1 column */
-    }
-
-    /* 5. Ensure flexboxes stack top-to-bottom */
-    section, main, header {
-        display: flex !important;
+    /* 3. Navigation Stacking */
+    nav {
         flex-direction: column !important;
+        padding: 1.5rem 1rem !important;
+        gap: 1.5rem !important;
+    }
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* 4. Hero Section Alignment */
+    #hero {
+        flex-direction: column !important;
+        padding: 3rem 1.5rem !important;
+        text-align: left !important;
+        gap: 3rem !important;
+    }
+    .hero-content {
+        max-width: 100% !important;
         width: 100% !important;
-        padding: 20px !important;
+    }
+    .hero-image {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* 5. Grid/Container Fixes */
+    .container {
+        padding: 3rem 1.5rem !important;
+    }
+    .lore-grid {
+        grid-template-columns: 1fr !important; /* Stacks the 3 lore boxes vertically */
+        gap: 2rem !important;
+    }
+
+    /* 6. Timeline Fix */
+    .timeline {
+        margin-left: 0 !important;
+        padding-left: 1.5rem !important;
+    }
+
+    /* 7. Button Layout on Mobile */
+    .btn {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-right: 0 !important;
+        margin-bottom: 1rem !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 8. Mint Terminal Fix */
+    .mint-interface {
+        padding: 1.5rem !important;
+        width: 100% !important;
         box-sizing: border-box !important;
     }
     
-    /* Make buttons easier to tap on touchscreens */
-    .btn, #connectBtn, #mintBtn {
-        width: 100%;
-        padding: 15px;
-        font-size: 1rem;
+    footer {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
     }
 }
