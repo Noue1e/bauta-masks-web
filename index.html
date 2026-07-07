@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAUTA MASKS | The Grand Ledger</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome added for the X, Discord, and Base footer icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" type="application/javascript"></script>
 </head>
@@ -17,8 +19,8 @@
             <a href="#lore">Lore</a>
             <a href="#grid">The Grid</a>
             <a href="#roadmap">Roadmap</a>
-    <a href="manifesto.html" onclick="window.open('manifesto.html', '_blank'); return false;" style="color: var(--accent-neon); font-weight: bold;">[ MANIFESTO ]</a>
-</div>
+            <a href="manifesto.html" onclick="window.open('manifesto.html', '_blank'); return false;" style="color: var(--accent-neon); font-weight: bold;">[ MANIFESTO ]</a>
+        </div>
         <div class="nav-actions">
             <button id="navMintBtn" class="btn primary nav-btn">MINT</button>
             <button id="connectBtn" class="wallet-btn">CONNECT NODE</button>
@@ -28,7 +30,8 @@
     <header id="hero">
         <div class="hero-content">
             <h1>ABSOLUTE ANONYMITY.<br>ABSOLUTE ORDER.</h1>
-            <p class="subtitle">Erasing the individual to unify the collective. 1,111 unique visages compiled as structural monuments on the Polygon blockchain.</p>
+            <!-- UPDATED: Changed Polygon to Base -->
+            <p class="subtitle">Erasing the individual to unify the collective. 1,111 unique visages compiled as structural monuments on the Base blockchain.</p>
             <div class="hero-actions">
                 <a href="#mint" class="btn primary">ACCESS TERMINAL</a>
                 <a href="https://x.com/Bautamasks" target="_blank" class="btn secondary">ENTER X</a>
@@ -46,7 +49,8 @@
             <div class="mint-status">
                 <p>NETWORK STATUS: <span id="networkStatus" class="offline">OFFLINE (CONNECT WALLET)</span></p>
                 <p>SUPPLY MINTED: <span id="supplyCount">? / 1111</span></p>
-                <p>ENTRY COST: <span>YOUR_PRICE POL</span></p>
+                <!-- UPDATED: Changed POL to ETH -->
+                <p>ENTRY COST: <span>YOUR_PRICE ETH</span></p>
             </div>
             
             <div class="mint-controls disabled" id="mintControls">
@@ -95,8 +99,9 @@
                 <p>The Genesis Phase. Establishing the Bauta Mask footprint across the network. This includes the activation of the primary X terminal, the release of the founding manifesto, and the opening of coordination channels for early collectors.</p>
             </div>
             <div class="epoch">
+                <!-- UPDATED: Changed Polygon to Base -->
                 <h3>[EPOCH 0x01] THE GREAT MASKING</h3>
-                <p>The network goes live. 1,111 distinct visual forms are officially minted on the Polygon blockchain. Immutable IPFS hosting ensures the permanent preservation of the collection's geometry.</p>
+                <p>The network goes live. 1,111 distinct visual forms are officially minted on the Base blockchain. Immutable IPFS hosting ensures the permanent preservation of the collection's geometry.</p>
             </div>
             <div class="epoch">
                 <h3>[EPOCH 0x02] SYNDICATE INTEGRATION</h3>
@@ -110,8 +115,16 @@
     </section>
 
     <footer class="border-top">
-        <p>BAUTA MASKS © 2026</p>
-        <p class="accent-text">SECURED ON POLYGON NETWORK</p>
+        <div class="footer-left">
+            <p>BAUTA MASKS © 2026</p>
+            <!-- UPDATED: Changed to Base and added custom base-logo class container -->
+            <p class="accent-text">SECURED ON BASE NETWORK <span class="base-logo"></span></p>
+        </div>
+        <!-- UPDATED: Added structural social buttons for X and Discord with Font Awesome logos -->
+        <div class="footer-socials">
+            <a href="https://x.com/Bautamasks" target="_blank" class="social-icon-btn" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://discord.gg/tXt3tXfFbY" target="_blank" class="social-icon-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        </div>
     </footer>
 
     <script src="script.js"></script>

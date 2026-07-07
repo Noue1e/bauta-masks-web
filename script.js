@@ -10,6 +10,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
         });
     });
 });
+
 // Nav Mint Button - Scrolls directly to the terminal
 document.getElementById('navMintBtn').addEventListener('click', () => {
     const targetElement = document.getElementById('mint');
@@ -32,7 +33,8 @@ const mintMessage = document.getElementById('mintMessage');
 let currentAccount = null;
 let mintQuantity = 1;
 
-const POLYGON_MAINNET_HEX = '0x89'; // Chain ID 137
+// UPDATED: Changed from Polygon (0x89) to Base Mainnet Hex Code
+const BASE_MAINNET_HEX = '0x2105'; // Chain ID 8453
 
 async function connectWallet() {
     if (typeof window.ethereum !== 'undefined') {
@@ -41,19 +43,46 @@ async function connectWallet() {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             currentAccount = accounts[0];
             
-            // 2. NETWORK GUARD: Check if they are on Polygon Mainnet
+            // 2. NETWORK GUARD: Check if they are on Base Mainnet
             const currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
             
-            if (currentChainId !== POLYGON_MAINNET_HEX) {
+            if (currentChainId !== BASE_MAINNET_HEX) {
                 try {
-                    // Force MetaMask to switch to Polygon Mainnet
+                    // Force MetaMask to switch to Base Mainnet
                     await window.ethereum.request({
                         method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: POLYGON_MAINNET_HEX }],
+                        params: [{ chainId: BASE_MAINNET_HEX }],
                     });
                 } catch (switchError) {
-                    alert("Node connection rejected. You must switch to the Polygon Mainnet to interface with the Grand Ledger.");
-                    return; // Abort connection if they refuse to switch
+                    // This error code indicates that the chain has not been added to MetaMask.
+                    if (switchError.code === 4902) {
+                        try {
+                            // If they don't have Base configured, automatically add it for them
+                            await window.ethereum.request({
+                                method: 'wallet_addEthereumChain',
+                                params: [
+                                    {
+                                        chainId: BASE_MAINNET_HEX,
+                                        chainName: 'Base',
+                                        rpcUrls: ['https://mainnet.base.org'], // Official Base RPC
+                                        nativeCurrency: {
+                                            name: 'Ethereum',
+                                            symbol: 'ETH', // Base uses ETH for gas
+                                            decimals: 18
+                                        },
+                                        blockExplorerUrls: ['https://basescan.org']
+                                    }
+                                ]
+                            });
+                        } catch (addError) {
+                            alert("Node connection rejected. Failed to add the Base network to your wallet.");
+                            return; // Abort connection
+                        }
+                    } else {
+                        // If they just rejected the switch
+                        alert("Node connection rejected. You must switch to the Base Mainnet to interface with the Grand Ledger.");
+                        return; // Abort connection
+                    }
                 }
             }
             
@@ -71,7 +100,7 @@ async function connectWallet() {
             console.error("Connection failed", error);
         }
     } else {
-        alert("No Web3 Provider detected. Please install MetaMask to interface with the ledger.");
+        alert("No Web3 Provider detected. Please install a compatible wallet (like MetaMask) to interface with the ledger.");
     }
 }
 
@@ -84,31 +113,32 @@ decreaseMint.addEventListener('click', () => {
 });
 
 increaseMint.addEventListener('click', () => {
-    if (mintQuantity < 10) { // Max 10 per transaction (adjustable later)
+    if (mintQuantity < 10) { // Max 10 per transaction
         mintQuantity++;
         mintAmountDisplay.innerText = mintQuantity;
     }
 });
 
-// Dummy Mint Function (To be replaced with Smart Contract Call)
+// Dummy Mint Function (Awaiting Smart Contract Deployment on Base)
 mintBtn.addEventListener('click', async () => {
     if (!currentAccount) return;
     
     // UI Loading State
     mintBtn.innerText = "PROCESSING TRANSACTION...";
     mintMessage.style.display = "block";
-    mintMessage.innerText = "Awaiting network confirmation...";
+    mintMessage.innerText = "Awaiting Base network confirmation...";
     
-    // Simulate Blockchain Delay (Remove this when contract is ready)
+    // Simulate Blockchain Delay
     setTimeout(() => {
         mintBtn.innerText = "MINT VALIDATOR";
-        mintMessage.innerText = `> SUCCESS: ${mintQuantity} Validator(s) added to Ledger.`;
+        mintMessage.innerText = `> SUCCESS: ${mintQuantity} Validator(s) added to the Ledger.`;
     }, 2500);
 
     /* ========================================================
-    FUTURE SMART CONTRACT INTEGRATION CODE GOES HERE:
+    FUTURE BASE SMART CONTRACT INTEGRATION:
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
+    // Remember to update CONTRACT_ADDRESS to your new Base deployment!
     const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
     const cost = await contract.cost();
     const tx = await contract.mint(mintQuantity, { value: cost.mul(mintQuantity) });
@@ -134,6 +164,13 @@ if (window.ethereum) {
             mintControls.classList.add('disabled');
         } else {
             connectWallet();
+        }
+    });
+
+    // Also listen for network changes, so if they manually switch away from Base, the UI resets
+    window.ethereum.on('chainChanged', (chainId) => {
+        if (chainId !== BASE_MAINNET_HEX) {
+             window.location.reload(); // Best practice: reload page on chain change to prevent stale data
         }
     });
 }

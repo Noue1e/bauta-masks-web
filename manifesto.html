@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAUTA MASKS | The Manifesto</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Added Font Awesome for the footer icons to match index.html -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <div class="logo">BAUTA MASKS</div>
         <div class="links">
-            <a href="index.html" style="color: var(--accent-neon); font-weight: bold;">[ ← RETURN TO TERMINAL ]</a>
+            <a href="index.html" style="color: var(--accent-base); font-weight: bold;">[ ← RETURN TO TERMINAL ]</a>
         </div>
     </nav>
 
@@ -40,7 +42,6 @@
             <h3>III. The Hierarchy of the Order</h3>
             <p>While all pieces serve the collective with equal structural authority, their geometric composition determines their status within the network topology:</p>
             <br>
-            <p></p>
             <ul>
                 <li style="margin-bottom: 10px; margin-left: 20px;"><strong>The Commons:</strong> The steadfast base layer of the visual collective. They represent the decentralized majority, wrapped in traditional stone, charcoal, and deep royal hues, holding the perimeter line.</li>
                 <li style="margin-bottom: 10px; margin-left: 20px;"><strong>The Rares &amp; Legendaries:</strong> Units that have absorbed intense stylistic anomalies. Their silhouettes ripple with active matrix code; their masks are forged from raw concrete, fractured plates, or brushed iron, marking them as high-tier network relays.</li>
@@ -54,18 +55,20 @@
                 <h3>[EPOCH 0x00] INITIALIZATION</h3>
                 <p><strong>The Grid Deployment:</strong> The master grid containing all 1,111 visual forms is compiled and rendered publicly, establishing visual proof of a fully realized, non-dilutable collection before minting begins.<br>
                 <strong>Manifesto Release:</strong> Publication of the full lore and visual architecture to filter for high-conviction art collectors.<br>
-                <strong>Social Architecture:</strong> Customization of the X profile as a clean, clean communication node. Launch of a closed coordination terminal for early community aligners.</p>
+                <strong>Social Architecture:</strong> Customization of the X profile as a clean communication node. Launch of a closed coordination terminal for early community aligners.</p>
             </div>
             <div class="epoch">
                 <h3>[EPOCH 0x01] THE GREAT MASKING</h3>
+                <!-- UPDATED: Replaced Polygon with Base -->
                 <p><strong>Decentralized Pinning:</strong> Immutably locking all 1,111 high-resolution images and metadata schemas onto IPFS, ensuring complete decentralization.<br>
-                <strong>The Polygon Mint:</strong> Deployment of the highly optimized ERC-721 smart contract onto the Polygon network, offering near-zero gas friction.<br>
+                <strong>The Base Mint:</strong> Deployment of the highly optimized ERC-721 smart contract onto the Base network, offering near-zero gas friction.<br>
                 <strong>Ecosystem Verification:</strong> Instant integration with secondary marketplaces utilizing custom metadata filtering to ensure the 4 rarity tiers are cleanly indexed from block zero.</p>
             </div>
             <div class="epoch">
                 <h3>[EPOCH 0x02] SYNDICATE INTEGRATION</h3>
+                <!-- UPDATED: Replaced Polygon scanner with Basescan, and POL with ETH -->
                 <p><strong>Token-Gated Terminal:</strong> Activation of a private, signature-verified portal for Bauta Mask holders. Access level is tiered based on the rarity of the held visage.<br>
-                <strong>On-Chain Curation &amp; Trials:</strong> The initiation of network-wide interactive events. Holders will participate in community puzzle challenges, tracing hidden tracks on the Polygon scanner, uncovering community assets, and proving their operational security to earn exclusive ecosystem artifacts and POL rewards.<br>
+                <strong>On-Chain Curation &amp; Trials:</strong> The initiation of network-wide interactive events. Holders will participate in community puzzle challenges, tracing hidden tracks on Basescan, uncovering community assets, and proving their operational security to earn exclusive ecosystem artifacts and ETH rewards.<br>
                 <strong>Consensus Curation:</strong> Implementation of a lightweight, fractional voting mechanic where holders steer the long-term direction of the community asset treasury.</p>
             </div>
             <div class="epoch">
@@ -79,7 +82,8 @@
         <h2 class="section-title">WHITEPAPER: PROTOCOL v1.0</h2>
         <div class="lore-card" style="margin-bottom: 2rem;">
             <h3>1. Technical Stacking &amp; Architecture</h3>
-            <p>The project leverages the Polygon Network (PoS) to provide robust security, instantaneous block finality, and negligible transaction costs. The Contract Standard is a modified ERC-721 implementation featuring optimized loops to minimize minting gas fees. Storage utilizes dual-redundant IPFS directory hashing with zero central API dependencies.</p>
+            <!-- UPDATED: Shifted technical description to Base / Ethereum L2 -->
+            <p>The project leverages the Base Network (Ethereum L2) to provide robust security, fast block finality, and negligible transaction costs. The Contract Standard is a modified ERC-721 implementation featuring optimized loops to minimize minting gas fees. Storage utilizes dual-redundant IPFS directory hashing with zero central API dependencies.</p>
             <br>
             <p><strong>Executable NFTs (xNFTs):</strong> The architecture is designed to support future executable NFT upgrades, meaning the NFT itself can function as a decentralized application inside the holder's wallet, granting them direct access to specialized tools without leaving their interface.</p>
         </div>
@@ -125,13 +129,15 @@
             <p>Ownership of a Bauta Mask transcends standard PFP utility. Every holder is granted absolute commercial rights to their specific mask. If physical Bauta Mask merchandise is launched, the smart contract is designed so that the holder of the specific mask featured on the product receives a percentage of the revenue, turning the asset into a cash-flowing entity. Finally, the NFTs serve as exclusive keys to the Anonymous Syndicate, granting access to a token-gated terminal.</p>
         </div>
 
-        <footer style="padding: 2rem 0; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-            <div class="footer-copy" style="color: var(--text-muted);">
-                BAUTA MASKS © 2026 | SECURED ON POLYGON
+        <!-- UPDATED: Replaced inline styles with the clean CSS structure from the main terminal -->
+        <footer class="border-top" style="padding: 3rem 0; margin-top: 2rem;">
+            <div class="footer-left">
+                <p>BAUTA MASKS © 2026</p>
+                <p class="accent-text">SECURED ON BASE NETWORK <span class="base-logo"></span></p>
             </div>
-            <div class="footer-socials" style="display: flex; gap: 1.5rem;">
-                <a href="https://x.com/Bautamasks" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: bold;">[ X ]</a>
-                <a href="https://discord.gg/tXt3tXfFbY" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: bold;">[ DISCORD ]</a>
+            <div class="footer-socials">
+                <a href="https://x.com/Bautamasks" target="_blank" class="social-icon-btn" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://discord.gg/tXt3tXfFbY" target="_blank" class="social-icon-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
             </div>
         </footer>
     </main>
